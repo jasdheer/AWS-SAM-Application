@@ -3,7 +3,7 @@ version = 0.1
 [default.deploy]
 [default.deploy.parameters]
 stack_name = "sam-app-new4"
-s3_bucket = "mynews4bucket-new"
+s3_bucket = "mynews4bucket-new2"
 s3_prefix = "sam-app-new4"
 region = "us-east-1"
 confirm_changeset = true
