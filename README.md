@@ -1,5 +1,3 @@
-# AWS-SAM-Application
-
 # [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
 
 ## Preparation
@@ -25,14 +23,34 @@ sam --version
 
 ## Deploying the stack on AWS
 
+0
+```
+apt install git -y
+git clone https://github.com/mandheer-maan/AWS-SAM-Application.git
+```
+
 1
-```aws confiure``` ...
+```
+aws configure
+AWS Access Key ID [None]: [Get Access Key ID from AWS]
+AWS Secret Access Key [None]: [Get from AWS]
+Default region name [None]: us-east-1
+Default output format [None]: json
+```
 
 2
- ```s3://[BUCKETNAME] --region us-east-1```
+ ```aws s3 mb s3://bucketname --region us-east-1```
 
 3
-Update ```samconfig.toml``` with the new bucket name provided in step 2
+Update ```samconfig.toml``` [change the required fields]
+```
+apt install nano -y
+s3_bucket = "bucketname"   [get this from step 2]
+```
+3.1
+```
+cd AWS-SAM-Application/
+```
 
 4
 ```sam build```
