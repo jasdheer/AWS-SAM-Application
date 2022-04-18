@@ -72,7 +72,6 @@ cd AWS-SAM-Application/sam-app/
 
 **6.**
 
-```apt-get -y install python3-pip```
 ```sam build```
 
 **7.**
