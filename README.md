@@ -1,6 +1,6 @@
 # [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
 
-## Preparation of Docker file
+## Preparation of Dockerfile
 ```
 FROM amazon/aws-sam-cli-build-image-python3.9
 RUN yum -y update && \
@@ -34,7 +34,7 @@ WORKDIR /root
 
 ```
 
-## Deploying the stack on AWS
+## Deploying the stack on AWS CLI
 
 **1.**
 ```
