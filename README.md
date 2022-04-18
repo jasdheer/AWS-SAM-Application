@@ -1,23 +1,21 @@
 # [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
 
+# [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
+
 ## Preparation
 ```
-docker pull ubuntu:21.10
-docker run -it ubuntu:21.10
+docker pull amazon/aws-sam-cli-build-image-python3.9
+docker run -it amazon/aws-sam-cli-build-image-python3.9
 ```
 
 ```
-apt-get update -y
-apt-get install awscli -y
+yum install -y
+yum install nano -y
+
 aws --version
 ```
 
 ```
-apt-get install wget -y
-wget https://github.com/aws/aws-sam-cli/releases/download/v1.46.0/aws-sam-cli-linux-x86_64.zip
-apt-get install unzip -y
-unzip aws-sam-cli-linux-x86_64.zip -d sam-installation
-./sam-installation/install
 sam --version
 ```
 
@@ -25,8 +23,7 @@ sam --version
 
 0
 ```
-apt install git -y
-git clone https://github.com/mandheer-maan/AWS-SAM-Application.git
+git clone https://<githubtoken>@github.com/mandheer-maan/AWS-SAM-Application.git
 ```
 
 1
@@ -36,6 +33,9 @@ AWS Access Key ID [None]: [Get Access Key ID from AWS]
 AWS Secret Access Key [None]: [Get from AWS]
 Default region name [None]: us-east-1
 Default output format [None]: json
+
+aws configure import --csv file://Downloads/test2_accessKeys.csv
+
 ```
 
 2
@@ -44,15 +44,15 @@ Default output format [None]: json
 3
 Update ```samconfig.toml``` [change the required fields]
 ```
-apt install nano -y
 s3_bucket = "bucketname"   [get this from step 2]
 ```
 3.1
 ```
-cd AWS-SAM-Application/
+cd AWS-SAM-Application/sam-app/
 ```
 
 4
+```apt-get -y install python3-pip```
 ```sam build```
 
 5
