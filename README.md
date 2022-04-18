@@ -1,32 +1,47 @@
 # [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
 
-# [YouTube Video](https://www.youtube.com/watch?v=MipjLaTp5nA&ab_channel=BeABetterDev)
+## Preparation of Docker file
+```
+FROM amazon/aws-sam-cli-build-image-python3.9
+RUN yum -y update && \
+    yum -y install nano && \
+    yum clean all
 
-## Preparation
-```
-docker pull amazon/aws-sam-cli-build-image-python3.9
-docker run -it amazon/aws-sam-cli-build-image-python3.9
-```
+RUN aws --version && \
+    sam --version
 
-```
-yum install -y
-yum install nano -y
+RUN git clone https://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@github.com/mandheer-maan/AWS-SAM-Application.git
 
-aws --version
-```
 
-```
-sam --version
+RUN aws configure set aws_access_key_id "AKIAX2ZZMHSLAQ2CSAJ2" --profile jasdheer && \
+    aws configure set aws_secret_access_key "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" --profile jasdheer && \
+    aws configure set region "us-east-1" --profile jasdheer && \
+    aws configure set output "json" --profile jasdheer
+
+RUN aws configure list
+
+
+RUN aws s3 mb s3://mynews4bucket-new3 --region us-east-1
+
+RUN cd AWS-SAM-Application/sam-app/
+
+RUN sam build 
+RUN sam deploy
+
+ENV HOME /root
+
+WORKDIR /root
+
 ```
 
 ## Deploying the stack on AWS
 
-0
+**1.**
 ```
-git clone https://<githubtoken>@github.com/mandheer-maan/AWS-SAM-Application.git
+ git clone https://github.com/mandheer-maan/AWS-SAM-Application.git
 ```
 
-1
+**2.**
 ```
 aws configure
 AWS Access Key ID [None]: [Get Access Key ID from AWS]
@@ -38,31 +53,37 @@ aws configure import --csv file://Downloads/test2_accessKeys.csv
 
 ```
 
-2
+**3.**
+
  ```aws s3 mb s3://bucketname --region us-east-1```
 
-3
+**4.**
+
 Update ```samconfig.toml``` [change the required fields]
 ```
 s3_bucket = "bucketname"   [get this from step 2]
 ```
-3.1
+
+**5.**
+
 ```
 cd AWS-SAM-Application/sam-app/
 ```
 
-4
+**6.**
+
 ```apt-get -y install python3-pip```
 ```sam build```
 
-5
+**7.**
+
 ```sam deploy```
 
 
 Extras
-==========
-1 Local Lamnbda API testing
+=======
+1. Local Lamnbda API testing
 ```sam local start-api```
 
-2 Invoke Function: 
+2. Invoke Function: 
 ```sam local invoke```
